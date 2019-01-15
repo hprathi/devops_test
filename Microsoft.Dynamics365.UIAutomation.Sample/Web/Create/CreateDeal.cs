@@ -23,12 +23,15 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
             using (var xrmBrowser = new Api.Browser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
-                xrmBrowser.GuidedHelp.CloseGuidedHelp();
+                //xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenMenu();
                 xrmBrowser.ThinkTime(200);
                 xrmBrowser.Navigation.OpenSubAreabyID("hsbc_deal");
+
+               // xrmBrowser.Navigation.OpenSubArea("Sales", "Deals");
+
                 xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Deals");
 

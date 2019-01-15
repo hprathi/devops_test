@@ -6,6 +6,7 @@ using Microsoft.Dynamics365.UIAutomation.Api;
 using Microsoft.Dynamics365.UIAutomation.Browser;
 using System;
 using System.Security;
+using System.Diagnostics;
 
 namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
 {
@@ -24,12 +25,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
+                Trace.TraceInformation("CRM Organization logged in successfully.");
 
                 xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
 
+                Trace.TraceInformation("Navigation Done. Sales >> Accounts");
+
                 xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Accounts");
+
+                Trace.TraceInformation("Navigation Done. Active Accounts");
 
                 xrmBrowser.ThinkTime(1000);
                 xrmBrowser.CommandBar.ClickCommand("New");
