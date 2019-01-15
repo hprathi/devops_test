@@ -36,7 +36,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
                 xrmBrowser.CommandBar.ClickCommand("New");
 
                 xrmBrowser.ThinkTime(5000);
-                xrmBrowser.Entity.SetValue("name", "HSBC Account" + DateTime.Today.ToShortDateString());
+                xrmBrowser.Entity.SetValue("name", "HSBC Account" + DateTime.Today.ToLongTimeString());
                 xrmBrowser.Entity.SetValue("telephone1", "555-555-5666");
                 xrmBrowser.Entity.SetValue(new LookupItem { Name = "hsbc_businesssegmentcountry", Value = "India" });
                 xrmBrowser.Entity.SetValue(new OptionSet { Name = "hsbc_clientstatus", Value = "Active" });
