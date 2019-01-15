@@ -24,6 +24,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
+                Assert
 
                 xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
@@ -35,9 +36,14 @@ namespace Microsoft.Dynamics365.UIAutomation.Sample.Web
                 xrmBrowser.CommandBar.ClickCommand("New");
 
                 xrmBrowser.ThinkTime(5000);
-                xrmBrowser.Entity.SetValue("name", "Test API Account");
-                xrmBrowser.Entity.SetValue("telephone1", "555-555-5555");
-                xrmBrowser.Entity.SetValue("websiteurl", "https://easyrepro.crm.dynamics.com");
+                xrmBrowser.Entity.SetValue("name", "HSBC Account" + DateTime.Today.ToShortDateString());
+                xrmBrowser.Entity.SetValue("telephone1", "555-555-5666");
+                xrmBrowser.Entity.SetValue(new LookupItem { Name = "hsbc_businesssegmentcountry", Value = "India" });
+                xrmBrowser.Entity.SetValue(new OptionSet { Name = "hsbc_clientstatus", Value = "Active" });
+                xrmBrowser.Entity.SetValue(new OptionSet { Name = "hsbc_priority", Value = "High" });
+                xrmBrowser.Entity.SetValue(new OptionSet { Name = "industrycode", Value = "Accounting" });
+
+                xrmBrowser.Entity.SetValue("websiteurl", "https://wiprolimited04.crm8.dynamics.com");
 
                 xrmBrowser.CommandBar.ClickCommand("Save & Close");
                 xrmBrowser.ThinkTime(2000);
